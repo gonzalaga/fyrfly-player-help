@@ -17,6 +17,7 @@
       --orange: oklch(69% 0.178 42);
       --orange-deep: oklch(52% 0.155 38);
       --green: oklch(60% 0.128 158);
+      --blue: oklch(48% 0.114 242);
       --danger: oklch(54% 0.17 29);
       --shadow: 0 18px 48px oklch(20% 0.035 245 / 0.12);
       --radius: 8px;
@@ -127,6 +128,12 @@
       border-color: oklch(70% 0.11 29);
     }
 
+    button[disabled] {
+      cursor: wait;
+      opacity: 0.66;
+      transform: none;
+    }
+
     .hero {
       padding: clamp(48px, 8vw, 86px) 0 30px;
       display: grid;
@@ -164,6 +171,12 @@
       color: oklch(28% 0.055 158);
       padding: 18px;
       font-weight: 680;
+    }
+
+    .notice.info {
+      border-color: oklch(70% 0.08 242);
+      background: linear-gradient(135deg, oklch(91% 0.045 242), oklch(96% 0.015 89));
+      color: oklch(31% 0.075 242);
     }
 
     .panel {
@@ -401,7 +414,7 @@
         <p>Add, edit, publish, and export support answers that were not generated from aggregated tickets.</p>
       </div>
       <div class="notice">
-        This is a static admin page. The password unlocks the editor in this browser. Publishing live changes requires a GitHub token with contents access to this repository.
+        Saves publish directly to GitHub when a publish token is configured. The customer page reads the latest manual FAQ data from GitHub, so changes are visible without waiting for a full Pages rebuild.
       </div>
     </section>
 
@@ -451,12 +464,13 @@
       <div>
         <section class="panel">
           <h2>Manual FAQs</h2>
-          <p class="status">The customer page reads from `manual-faqs.json`. Entries marked unpublished stay in the admin data but do not display publicly.</p>
+          <p class="status">Entries marked unpublished stay in the admin data but do not display publicly.</p>
           <div class="faq-list" id="faq-list"></div>
           <p class="empty" id="empty-list">No manual FAQs yet.</p>
 
           <div class="publish-panel">
-            <h2>Export or publish</h2>
+            <h2>Live publishing</h2>
+            <p class="notice info">Configure a GitHub token once on each admin device. After that, Save and Delete publish automatically.</p>
             <div class="action-row">
               <button type="button" id="download-button">Download JSON</button>
               <button class="secondary" type="button" id="copy-button">Copy JSON</button>
@@ -466,8 +480,14 @@
               <label for="github-token">GitHub token</label>
               <input id="github-token" type="password" autocomplete="off" placeholder="Fine-grained token with contents read/write">
             </div>
+            <label class="checkbox-row">
+              <input id="remember-token" type="checkbox">
+              Remember token on this device for automatic live saves
+            </label>
             <div class="action-row">
-              <button type="button" id="publish-button">Publish to GitHub</button>
+              <button type="button" id="save-token-button">Save token setting</button>
+              <button class="secondary" type="button" id="publish-button">Publish now</button>
+              <button class="danger" type="button" id="forget-token-button">Forget token</button>
             </div>
             <p class="status" id="publish-status" role="status"></p>
           </div>
@@ -489,6 +509,7 @@
     const REPO_NAME = "fyrfly-player-help";
     const REPO_BRANCH = "main";
     const CONTENT_PATH = "manual-faqs.json";
+    const TOKEN_STORAGE_KEY = "fyrflyFaqGithubToken";
 
     const loginPanel = document.querySelector("#login-panel");
     const adminPanel = document.querySelector("#admin-panel");
@@ -510,6 +531,7 @@
       keywords: document.querySelector("#faq-keywords"),
       published: document.querySelector("#faq-published"),
       token: document.querySelector("#github-token"),
+      rememberToken: document.querySelector("#remember-token"),
     };
 
     let faqs = [];
@@ -544,6 +566,34 @@
         binary += String.fromCharCode(byte);
       });
       return btoa(binary);
+    }
+
+    function getPublishToken() {
+      return fields.token.value.trim() || localStorage.getItem(TOKEN_STORAGE_KEY) || "";
+    }
+
+    function saveTokenPreference() {
+      const token = fields.token.value.trim();
+      if (fields.rememberToken.checked && token) {
+        localStorage.setItem(TOKEN_STORAGE_KEY, token);
+        setStatus(publishStatus, "Token saved on this device. Future Save and Delete actions will publish automatically.", "good");
+        return;
+      }
+      if (!fields.rememberToken.checked) {
+        localStorage.removeItem(TOKEN_STORAGE_KEY);
+        setStatus(publishStatus, "Token will only be used while it remains in this field.", "good");
+        return;
+      }
+      setStatus(publishStatus, "Enter a token before saving this setting.", "bad");
+    }
+
+    function hydrateTokenPreference() {
+      const storedToken = localStorage.getItem(TOKEN_STORAGE_KEY);
+      if (storedToken) {
+        fields.token.value = storedToken;
+        fields.rememberToken.checked = true;
+        setStatus(publishStatus, "Automatic live saves are enabled on this device.", "good");
+      }
     }
 
     function clearForm() {
@@ -619,113 +669,11 @@
       renderFaqs();
     }
 
-    async function unlock() {
-      loginPanel.classList.add("hidden");
-      adminPanel.classList.remove("hidden");
-      logoutButton.classList.remove("hidden");
-      await loadFaqs();
-    }
-
-    loginForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const enteredHash = await sha256(document.querySelector("#admin-password").value);
-      if (enteredHash !== ADMIN_PASSWORD_HASH) {
-        setStatus(loginStatus, "Password did not match.", "bad");
-        return;
-      }
-      sessionStorage.setItem("fyrflyFaqAdminUnlocked", "true");
-      await unlock();
-    });
-
-    logoutButton.addEventListener("click", () => {
-      sessionStorage.removeItem("fyrflyFaqAdminUnlocked");
-      adminPanel.classList.add("hidden");
-      loginPanel.classList.remove("hidden");
-      logoutButton.classList.add("hidden");
-      clearForm();
-    });
-
-    faqForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const question = fields.question.value.trim();
-      const answer = fields.answer.value.trim();
-      if (!question || !answer) {
-        setStatus(formStatus, "Question and answer are required.", "bad");
-        return;
-      }
-
-      const id = fields.id.value || slugify(question);
-      const entry = {
-        id,
-        question,
-        answer,
-        tags: parseTags(fields.tags.value),
-        keywords: fields.keywords.value.trim(),
-        published: fields.published.checked,
-        updated: new Date().toISOString().slice(0, 10),
-      };
-
-      const existingIndex = faqs.findIndex((faq) => faq.id === id);
-      if (existingIndex >= 0) {
-        faqs[existingIndex] = entry;
-      } else {
-        faqs.push(entry);
-      }
-
-      renderFaqs();
-      clearForm();
-      setStatus(formStatus, "FAQ saved locally. Publish or download JSON to update the live site.", "good");
-    });
-
-    document.querySelector("#clear-button").addEventListener("click", clearForm);
-
-    faqList.addEventListener("click", (event) => {
-      const button = event.target.closest("button[data-action]");
-      if (!button) {
-        return;
-      }
-      const faq = faqs.find((item) => item.id === button.dataset.id);
-      if (!faq) {
-        return;
-      }
-      if (button.dataset.action === "edit") {
-        fields.id.value = faq.id;
-        fields.question.value = faq.question || "";
-        fields.answer.value = faq.answer || "";
-        fields.tags.value = (faq.tags || []).join(", ");
-        fields.keywords.value = faq.keywords || "";
-        fields.published.checked = faq.published !== false;
-        formTitle.textContent = "Edit manual FAQ";
-        window.scrollTo({ top: faqForm.offsetTop - 90, behavior: "smooth" });
-      }
-      if (button.dataset.action === "delete") {
-        faqs = faqs.filter((item) => item.id !== faq.id);
-        renderFaqs();
-        setStatus(formStatus, "FAQ deleted locally. Publish or download JSON to update the live site.", "good");
-      }
-    });
-
-    document.querySelector("#download-button").addEventListener("click", () => {
-      const blob = new Blob([currentJson()], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = CONTENT_PATH;
-      link.click();
-      URL.revokeObjectURL(url);
-      setStatus(publishStatus, "Downloaded manual-faqs.json.", "good");
-    });
-
-    document.querySelector("#copy-button").addEventListener("click", async () => {
-      await navigator.clipboard.writeText(currentJson());
-      setStatus(publishStatus, "Copied JSON to clipboard.", "good");
-    });
-
-    document.querySelector("#publish-button").addEventListener("click", async () => {
-      const token = fields.token.value.trim();
+    async function publishFaqs(actionLabel = "Published") {
+      const token = getPublishToken();
       if (!token) {
-        setStatus(publishStatus, "Enter a GitHub token before publishing.", "bad");
-        return;
+        setStatus(publishStatus, "Saved locally. Add a GitHub token once to make future saves live automatically.", "bad");
+        return false;
       }
 
       setStatus(publishStatus, "Publishing manual-faqs.json to GitHub...");
@@ -763,10 +711,133 @@
           throw new Error(text || `GitHub returned ${update.status}`);
         }
 
-        setStatus(publishStatus, "Published. GitHub Pages will refresh after the deployment finishes.", "good");
+        setStatus(publishStatus, `${actionLabel}. The customer page reads the latest FAQ data directly from GitHub.`, "good");
+        return true;
       } catch (error) {
         setStatus(publishStatus, `Publish failed: ${error.message}`, "bad");
+        return false;
       }
+    }
+
+    async function unlock() {
+      loginPanel.classList.add("hidden");
+      adminPanel.classList.remove("hidden");
+      logoutButton.classList.remove("hidden");
+      await loadFaqs();
+      hydrateTokenPreference();
+    }
+
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const enteredHash = await sha256(document.querySelector("#admin-password").value);
+      if (enteredHash !== ADMIN_PASSWORD_HASH) {
+        setStatus(loginStatus, "Password did not match.", "bad");
+        return;
+      }
+      sessionStorage.setItem("fyrflyFaqAdminUnlocked", "true");
+      await unlock();
+    });
+
+    logoutButton.addEventListener("click", () => {
+      sessionStorage.removeItem("fyrflyFaqAdminUnlocked");
+      adminPanel.classList.add("hidden");
+      loginPanel.classList.remove("hidden");
+      logoutButton.classList.add("hidden");
+      clearForm();
+    });
+
+    faqForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const submitButton = document.querySelector("#save-button");
+      const question = fields.question.value.trim();
+      const answer = fields.answer.value.trim();
+      if (!question || !answer) {
+        setStatus(formStatus, "Question and answer are required.", "bad");
+        return;
+      }
+
+      const id = fields.id.value || slugify(question);
+      const entry = {
+        id,
+        question,
+        answer,
+        tags: parseTags(fields.tags.value),
+        keywords: fields.keywords.value.trim(),
+        published: fields.published.checked,
+        updated: new Date().toISOString().slice(0, 10),
+      };
+
+      const existingIndex = faqs.findIndex((faq) => faq.id === id);
+      if (existingIndex >= 0) {
+        faqs[existingIndex] = entry;
+      } else {
+        faqs.push(entry);
+      }
+
+      renderFaqs();
+      clearForm();
+      setStatus(formStatus, "FAQ saved.", "good");
+      submitButton.disabled = true;
+      await publishFaqs("FAQ saved and published");
+      submitButton.disabled = false;
+    });
+
+    document.querySelector("#clear-button").addEventListener("click", clearForm);
+
+    faqList.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-action]");
+      if (!button) {
+        return;
+      }
+      const faq = faqs.find((item) => item.id === button.dataset.id);
+      if (!faq) {
+        return;
+      }
+      if (button.dataset.action === "edit") {
+        fields.id.value = faq.id;
+        fields.question.value = faq.question || "";
+        fields.answer.value = faq.answer || "";
+        fields.tags.value = (faq.tags || []).join(", ");
+        fields.keywords.value = faq.keywords || "";
+        fields.published.checked = faq.published !== false;
+        formTitle.textContent = "Edit manual FAQ";
+        window.scrollTo({ top: faqForm.offsetTop - 90, behavior: "smooth" });
+      }
+      if (button.dataset.action === "delete") {
+        faqs = faqs.filter((item) => item.id !== faq.id);
+        renderFaqs();
+        setStatus(formStatus, "FAQ deleted.", "good");
+        publishFaqs("FAQ deleted and published");
+      }
+    });
+
+    document.querySelector("#download-button").addEventListener("click", () => {
+      const blob = new Blob([currentJson()], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = CONTENT_PATH;
+      link.click();
+      URL.revokeObjectURL(url);
+      setStatus(publishStatus, "Downloaded manual-faqs.json.", "good");
+    });
+
+    document.querySelector("#copy-button").addEventListener("click", async () => {
+      await navigator.clipboard.writeText(currentJson());
+      setStatus(publishStatus, "Copied JSON to clipboard.", "good");
+    });
+
+    document.querySelector("#save-token-button").addEventListener("click", saveTokenPreference);
+
+    document.querySelector("#forget-token-button").addEventListener("click", () => {
+      localStorage.removeItem(TOKEN_STORAGE_KEY);
+      fields.token.value = "";
+      fields.rememberToken.checked = false;
+      setStatus(publishStatus, "Token forgotten on this device.", "good");
+    });
+
+    document.querySelector("#publish-button").addEventListener("click", async () => {
+      await publishFaqs("Published");
     });
 
     if (sessionStorage.getItem("fyrflyFaqAdminUnlocked") === "true") {

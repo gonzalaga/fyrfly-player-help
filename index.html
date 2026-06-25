@@ -864,13 +864,41 @@
       return details;
     }
 
-    async function loadManualFaqs() {
+    function decodeBase64Utf8(value) {
+      const binary = atob(value.replace(/\s/g, ""));
+      const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
+      return new TextDecoder().decode(bytes);
+    }
+
+    async function loadManualFaqData() {
+      const apiUrl = "https://api.github.com/repos/gonzalaga/fyrfly-player-help/contents/manual-faqs.json?ref=main";
+      try {
+        const response = await fetch(apiUrl, { cache: "no-store" });
+        if (response.ok) {
+          const payload = await response.json();
+          if (payload && payload.content) {
+            return JSON.parse(decodeBase64Utf8(payload.content));
+          }
+        }
+      } catch (error) {
+        console.warn("Manual FAQs could not be loaded from GitHub.", error);
+      }
+
       try {
         const response = await fetch("manual-faqs.json", { cache: "no-store" });
         if (!response.ok) {
-          return;
+          return [];
         }
-        const faqs = await response.json();
+        return await response.json();
+      } catch (error) {
+        console.warn("Manual FAQs could not be loaded from the local file.", error);
+        return [];
+      }
+    }
+
+    async function loadManualFaqs() {
+      try {
+        const faqs = await loadManualFaqData();
         const publishedFaqs = Array.isArray(faqs) ? faqs.filter((faq) => faq && faq.published !== false) : [];
         if (!publishedFaqs.length) {
           return;
