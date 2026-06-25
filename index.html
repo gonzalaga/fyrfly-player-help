@@ -345,6 +345,14 @@
       gap: 12px;
     }
 
+    .manual-faqs {
+      margin-top: clamp(30px, 5vw, 54px);
+    }
+
+    .manual-faqs[hidden] {
+      display: none;
+    }
+
     details {
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -758,6 +766,14 @@
             </details>
           </div>
 
+          <section class="manual-faqs" id="manual-faqs" hidden aria-labelledby="manual-faq-title">
+            <div class="section-heading">
+              <h2 id="manual-faq-title">Additional questions</h2>
+              <p>These answers are maintained manually by the Remix8 support team.</p>
+            </div>
+            <div class="faq-list" id="manual-faq-list"></div>
+          </section>
+
           <p class="empty-state" id="empty-state">No FAQ entries matched that search. Try a shorter word like app, Wi-Fi, power, or Spotify.</p>
         </div>
       </section>
@@ -781,10 +797,12 @@
 
   <script>
     const searchInput = document.querySelector("#faq-search");
-    const items = Array.from(document.querySelectorAll(".faq-item"));
     const emptyState = document.querySelector("#empty-state");
+    const manualSection = document.querySelector("#manual-faqs");
+    const manualList = document.querySelector("#manual-faq-list");
+    let items = Array.from(document.querySelectorAll(".faq-item"));
 
-    searchInput.addEventListener("input", () => {
+    function applySearch() {
       const query = searchInput.value.trim().toLowerCase();
       let visibleCount = 0;
 
@@ -798,7 +816,77 @@
       });
 
       emptyState.classList.toggle("visible", visibleCount === 0);
-    });
+    }
+
+    function refreshFaqItems() {
+      items = Array.from(document.querySelectorAll(".faq-item"));
+      applySearch();
+    }
+
+    function createManualFaq(faq, index) {
+      const details = document.createElement("details");
+      const id = faq.id || `manual-${index + 1}`;
+      details.className = "faq-item manual-faq-item";
+      details.id = id;
+      details.dataset.keywords = [faq.keywords, ...(faq.tags || [])].filter(Boolean).join(" ");
+
+      const summary = document.createElement("summary");
+      const question = document.createElement("span");
+      question.textContent = faq.question || "Untitled question";
+      const marker = document.createElement("span");
+      marker.className = "marker";
+      marker.setAttribute("aria-hidden", "true");
+      summary.append(question, marker);
+
+      const answer = document.createElement("div");
+      answer.className = "answer";
+      const paragraphs = String(faq.answer || "").split(/\n{2,}/).map((part) => part.trim()).filter(Boolean);
+      paragraphs.forEach((paragraph) => {
+        const p = document.createElement("p");
+        p.textContent = paragraph;
+        answer.appendChild(p);
+      });
+
+      if (Array.isArray(faq.tags) && faq.tags.length) {
+        const row = document.createElement("div");
+        row.className = "meta-row";
+        row.setAttribute("aria-label", "Related topics");
+        faq.tags.slice(0, 6).forEach((tag) => {
+          const pill = document.createElement("span");
+          pill.className = "tag";
+          pill.textContent = tag;
+          row.appendChild(pill);
+        });
+        answer.appendChild(row);
+      }
+
+      details.append(summary, answer);
+      return details;
+    }
+
+    async function loadManualFaqs() {
+      try {
+        const response = await fetch("manual-faqs.json", { cache: "no-store" });
+        if (!response.ok) {
+          return;
+        }
+        const faqs = await response.json();
+        const publishedFaqs = Array.isArray(faqs) ? faqs.filter((faq) => faq && faq.published !== false) : [];
+        if (!publishedFaqs.length) {
+          return;
+        }
+        const fragment = document.createDocumentFragment();
+        publishedFaqs.forEach((faq, index) => fragment.appendChild(createManualFaq(faq, index)));
+        manualList.replaceChildren(fragment);
+        manualSection.hidden = false;
+        refreshFaqItems();
+      } catch (error) {
+        console.warn("Manual FAQs could not be loaded.", error);
+      }
+    }
+
+    searchInput.addEventListener("input", applySearch);
+    loadManualFaqs();
   </script>
 </body>
 </html>
