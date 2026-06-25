@@ -111,10 +111,12 @@
       border-radius: 999px;
       font-weight: 700;
       font-size: 0.92rem;
+      font-family: inherit;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
       transition: transform 180ms ease, background 180ms ease, color 180ms ease;
     }
 
@@ -252,6 +254,13 @@
       max-width: 76ch;
       color: oklch(28% 0.055 158);
       font-weight: 650;
+    }
+
+    .support-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .faq-layout {
@@ -522,6 +531,10 @@
         justify-content: flex-start;
       }
 
+      .support-actions {
+        justify-content: flex-start;
+      }
+
       .hero {
         padding-top: 44px;
       }
@@ -573,8 +586,143 @@
         grid-template-columns: 1fr;
       }
 
+      .support-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
       summary {
         grid-template-columns: 1fr 30px;
+      }
+    }
+
+    @media print {
+      @page {
+        size: letter;
+        margin: 0.58in;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      body {
+        background: oklch(99% 0.004 87);
+        color: oklch(18% 0.012 245);
+        font-size: 10.5pt;
+        line-height: 1.45;
+      }
+
+      .topbar,
+      .hero-panel,
+      .support-strip,
+      .sidebar,
+      .contact,
+      footer,
+      .empty-state,
+      .marker,
+      .meta-row {
+        display: none !important;
+      }
+
+      main {
+        width: auto;
+        margin: 0;
+      }
+
+      .hero {
+        display: block;
+        padding: 0 0 18pt;
+        border-bottom: 2pt solid oklch(18% 0.012 245);
+      }
+
+      .eyebrow {
+        margin: 0 0 8pt;
+        color: oklch(52% 0.155 38);
+        font-size: 8pt;
+      }
+
+      h1 {
+        max-width: none;
+        font-size: 34pt;
+        line-height: 0.95;
+      }
+
+      .hero-copy {
+        margin-top: 10pt;
+        max-width: 62ch;
+        color: oklch(38% 0.026 245);
+        font-size: 10.5pt;
+      }
+
+      .faq-layout {
+        display: block;
+        padding: 18pt 0 0;
+      }
+
+      .section-heading {
+        margin: 0 0 10pt;
+        page-break-after: avoid;
+      }
+
+      h2 {
+        font-size: 18pt;
+        line-height: 1;
+      }
+
+      .section-heading p {
+        max-width: 64ch;
+        color: oklch(38% 0.026 245);
+        font-size: 9.5pt;
+      }
+
+      .faq-list {
+        display: block;
+      }
+
+      details {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin: 0;
+        padding: 8pt 0;
+        border: 0;
+        border-top: 0.7pt solid oklch(76% 0.019 87);
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        overflow: visible;
+      }
+
+      details[open] {
+        border-color: oklch(76% 0.019 87);
+      }
+
+      summary {
+        display: block;
+        padding: 0 0 5pt;
+        cursor: default;
+        font-size: 12pt;
+        line-height: 1.25;
+        page-break-after: avoid;
+      }
+
+      .answer {
+        max-width: none;
+        padding: 0;
+        color: oklch(33% 0.026 245);
+        font-size: 10pt;
+      }
+
+      .answer p {
+        margin: 0 0 5pt;
+      }
+
+      .manual-faqs {
+        margin-top: 18pt;
+      }
+
+      .manual-faqs[hidden] {
+        display: none;
       }
     }
 
@@ -598,6 +746,7 @@
         </a>
         <nav class="top-actions" aria-label="Support actions">
           <a class="button secondary" href="#faq">Browse FAQ</a>
+          <button class="button secondary" id="download-pdf" type="button">Download PDF</button>
           <a class="button" href="mailto:support@remix8.com">Contact support</a>
         </nav>
       </div>
@@ -628,7 +777,10 @@
 
       <section class="support-strip" aria-label="Before contacting support">
         <p>Need help with a specific device? Include the player model, current app or OS version, and a photo of the screen where the issue appears.</p>
-        <a class="button" href="mailto:support@remix8.com">Email support</a>
+        <div class="support-actions">
+          <button class="button secondary" type="button" data-pdf-trigger>Download PDF</button>
+          <a class="button" href="mailto:support@remix8.com">Email support</a>
+        </div>
       </section>
 
       <section class="faq-layout" id="faq" aria-labelledby="faq-title">
@@ -800,6 +952,7 @@
     const emptyState = document.querySelector("#empty-state");
     const manualSection = document.querySelector("#manual-faqs");
     const manualList = document.querySelector("#manual-faq-list");
+    const pdfButtons = document.querySelectorAll("#download-pdf, [data-pdf-trigger]");
     let items = Array.from(document.querySelectorAll(".faq-item"));
 
     function applySearch() {
@@ -913,8 +1066,36 @@
       }
     }
 
+    async function printFaqPdf() {
+      await manualFaqsReady;
+      const originalSearch = searchInput.value;
+      const faqItems = Array.from(document.querySelectorAll(".faq-item"));
+      const openStates = faqItems.map((item) => item.open);
+
+      searchInput.value = "";
+      applySearch();
+      faqItems.forEach((item) => {
+        item.open = true;
+      });
+
+      const restoreState = () => {
+        searchInput.value = originalSearch;
+        faqItems.forEach((item, index) => {
+          item.open = openStates[index];
+        });
+        applySearch();
+        window.removeEventListener("afterprint", restoreState);
+      };
+
+      window.addEventListener("afterprint", restoreState);
+      window.print();
+    }
+
     searchInput.addEventListener("input", applySearch);
-    loadManualFaqs();
+    const manualFaqsReady = loadManualFaqs();
+    pdfButtons.forEach((button) => {
+      button.addEventListener("click", printFaqPdf);
+    });
   </script>
 </body>
 </html>
