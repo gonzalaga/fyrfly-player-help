@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fyrfly Player Help | Remix8</title>
+  <meta name="description" content="Customer help for Fyrfly and Campfire Player setup, Spotify login, app updates, Wi-Fi, charging, restrictions, and music transfer.">
+  <link rel="icon" href="assets/remix8-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: oklch(16% 0.012 245);
+      --muted: oklch(43% 0.026 245);
+      --paper: oklch(98% 0.006 87);
+      --surface: oklch(94% 0.012 89);
+      --line: oklch(82% 0.019 87);
+      --orange: oklch(69% 0.178 42);
+      --orange-deep: oklch(52% 0.155 38);
+      --green: oklch(60% 0.128 158);
+      --blue: oklch(48% 0.114 242);
+      --shadow: 0 18px 48px oklch(20% 0.035 245 / 0.12);
+      --radius: 8px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, oklch(92% 0.045 74 / 0.55) 0 1px, transparent 1px 100%),
+        linear-gradient(180deg, oklch(92% 0.045 74 / 0.45) 0 1px, transparent 1px 100%),
+        var(--paper);
+      background-size: 32px 32px;
+      font-family: Avenir Next, Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-shell {
+      min-height: 100vh;
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: oklch(98% 0.006 87 / 0.91);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: clamp(138px, 18vw, 206px);
+      height: auto;
+      display: block;
+    }
+
+    .brand-note {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .button {
+      appearance: none;
+      border: 1px solid oklch(18% 0.012 245);
+      background: oklch(18% 0.012 245);
+      color: oklch(98% 0.006 87);
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      background: var(--orange-deep);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: transparent;
+      border-color: var(--line);
+    }
+
+    .button.secondary:hover {
+      background: oklch(91% 0.035 74);
+    }
+
+    main {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: end;
+      padding: clamp(56px, 9vw, 112px) 0 clamp(34px, 6vw, 74px);
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--orange-deep);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 12ch;
+      font-size: clamp(3.1rem, 10vw, 8.5rem);
+      line-height: 0.86;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .hero-copy {
+      margin: 22px 0 0;
+      max-width: 64ch;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+    }
+
+    .hero-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: oklch(98% 0.006 87 / 0.76);
+      box-shadow: var(--shadow);
+      padding: clamp(20px, 3vw, 28px);
+      align-self: stretch;
+      display: grid;
+      align-content: space-between;
+      gap: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: auto -34px -76px auto;
+      width: 210px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        repeating-radial-gradient(circle, transparent 0 10px, oklch(18% 0.012 245) 11px 13px, transparent 14px 22px);
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .panel-label {
+      color: var(--muted);
+      margin: 0 0 12px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .topic-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .topic-pills a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .smallprint {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin: 0;
+    }
+
+    .support-strip {
+      margin: 0 0 clamp(34px, 6vw, 68px);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 22px;
+      border: 1px solid oklch(73% 0.07 158);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, oklch(91% 0.063 154), oklch(95% 0.028 89));
+    }
+
+    .support-strip p {
+      margin: 0;
+      max-width: 76ch;
+      color: oklch(28% 0.055 158);
+      font-weight: 650;
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+      gap: clamp(28px, 5vw, 64px);
+      align-items: start;
+      padding-bottom: clamp(60px, 9vw, 110px);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 100px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: oklch(98% 0.006 87 / 0.82);
+      padding: 16px;
+    }
+
+    .search-label {
+      display: block;
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .search-input {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: oklch(99% 0.004 87);
+      color: var(--ink);
+      padding: 0 13px;
+      font: inherit;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 4px oklch(74% 0.16 45 / 0.18);
+    }
+
+    .nav-list {
+      display: grid;
+      gap: 4px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-list a {
+      display: block;
+      padding: 9px 10px;
+      border-radius: 6px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .nav-list a:hover {
+      color: var(--ink);
+      background: var(--surface);
+    }
+
+    .section-heading {
+      margin: 0 0 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .section-heading p {
+      margin: 0;
+      max-width: 68ch;
+      color: var(--muted);
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: oklch(98% 0.006 87);
+      overflow: hidden;
+      box-shadow: 0 10px 24px oklch(20% 0.035 245 / 0.05);
+    }
+
+    details[open] {
+      border-color: oklch(70% 0.12 42);
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: clamp(18px, 3vw, 24px);
+      font-weight: 800;
+      font-size: clamp(1.05rem, 1.5vw, 1.28rem);
+      line-height: 1.18;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .marker {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      display: inline-grid;
+      place-items: center;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .marker::before,
+    .marker::after {
+      content: "";
+      grid-area: 1 / 1;
+      width: 13px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--ink);
+    }
+
+    .marker::after {
+      transform: rotate(90deg);
+      transition: opacity 160ms ease;
+    }
+
+    details[open] .marker {
+      background: oklch(88% 0.08 42);
+      transform: rotate(180deg);
+    }
+
+    details[open] .marker::after {
+      opacity: 0;
+    }
+
+    .answer {
+      padding: 0 clamp(18px, 3vw, 24px) clamp(20px, 3vw, 28px);
+      color: var(--muted);
+      max-width: 76ch;
+    }
+
+    .answer p {
+      margin: 0 0 14px;
+    }
+
+    .answer p:last-child {
+      margin-bottom: 0;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 0;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 9px;
+      border-radius: 999px;
+      background: oklch(91% 0.034 242);
+      color: oklch(34% 0.09 242);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .empty-state {
+      display: none;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      color: var(--muted);
+      background: oklch(98% 0.006 87 / 0.7);
+    }
+
+    .empty-state.visible {
+      display: block;
+    }
+
+    .contact {
+      margin: 0 auto clamp(52px, 8vw, 96px);
+      width: min(var(--max), calc(100% - 40px));
+      border-top: 2px solid oklch(18% 0.012 245);
+      padding-top: clamp(26px, 5vw, 42px);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+    }
+
+    .contact p {
+      margin: 10px 0 0;
+      max-width: 70ch;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      .topbar-inner,
+      .hero,
+      .support-strip,
+      .faq-layout,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        padding: 16px 0;
+      }
+
+      .top-actions {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      h1 {
+        max-width: 9ch;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .nav-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar-inner,
+      main,
+      .contact,
+      .footer-inner {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .topbar-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .brand {
+        display: grid;
+        gap: 8px;
+      }
+
+      .brand-note {
+        white-space: normal;
+      }
+
+      .button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .top-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      summary {
+        grid-template-columns: 1fr 30px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#top" aria-label="Remix8 help home">
+          <img src="assets/remix8-logo.png" alt="Remix8">
+          <span class="brand-note">Fyrfly Player support</span>
+        </a>
+        <nav class="top-actions" aria-label="Support actions">
+          <a class="button secondary" href="#faq">Browse FAQ</a>
+          <a class="button" href="mailto:support@remix8.com">Contact support</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Customer help</p>
+          <h1 id="page-title">Fyrfly Player Help</h1>
+          <p class="hero-copy">Fast answers for the device and software questions customers ask most: Spotify login, app updates, Wi-Fi, charging, parental restrictions, setup, and music transfer.</p>
+        </div>
+
+        <aside class="hero-panel" aria-label="Popular help topics">
+          <div>
+            <p class="panel-label">Popular topics</p>
+            <ul class="topic-pills">
+              <li><a href="#spotify">Spotify login</a></li>
+              <li><a href="#apps">Apps</a></li>
+              <li><a href="#power">Power</a></li>
+              <li><a href="#wifi">Wi-Fi</a></li>
+              <li><a href="#music">Music transfer</a></li>
+            </ul>
+          </div>
+          <p class="smallprint">Updated June 25, 2026. Built from recurring Fyrfly and Campfire Player support topics.</p>
+        </aside>
+      </section>
+
+      <section class="support-strip" aria-label="Before contacting support">
+        <p>Need help with a specific device? Include the player model, current app or OS version, and a photo of the screen where the issue appears.</p>
+        <a class="button" href="mailto:support@remix8.com">Email support</a>
+      </section>
+
+      <section class="faq-layout" id="faq" aria-labelledby="faq-title">
+        <aside class="sidebar" aria-label="FAQ search and navigation">
+          <label class="search-label" for="faq-search">Search help</label>
+          <input class="search-input" id="faq-search" type="search" placeholder="Try Spotify, Wi-Fi, charging" autocomplete="off">
+          <ul class="nav-list">
+            <li><a href="#spotify">Spotify login</a></li>
+            <li><a href="#apps">App updates</a></li>
+            <li><a href="#power">Power and charging</a></li>
+            <li><a href="#restrictions">Restrictions</a></li>
+            <li><a href="#wifi">Wi-Fi</a></li>
+            <li><a href="#setup">Setup</a></li>
+            <li><a href="#music">Music transfer</a></li>
+          </ul>
+        </aside>
+
+        <div>
+          <div class="section-heading">
+            <h2 id="faq-title">Common questions</h2>
+            <p>These answers cover device and software support. Shipping, returns, refunds, order status, and store-policy questions are handled separately by customer support.</p>
+          </div>
+
+          <div class="faq-list" id="faq-list">
+            <details class="faq-item" id="spotify" open data-keywords="spotify login sign in account app access authentication">
+              <summary>
+                <span>What should I do if Spotify will not let me sign in on a Fyrfly Player?</span>
+                <span class="marker" aria-hidden="true"></span>
+              </summary>
+              <div class="answer">
+                <p>Connect the player to Wi-Fi, make sure Spotify is updated from the Fyrfly or Campfire app store, then restart the device and try the login again.</p>
+                <p>If the login opens a web flow or loops back to the same screen, contact support with the device model, OS version, Spotify version, and a photo of the screen where it gets stuck.</p>
+                <div class="meta-row" aria-label="Related topics">
+                  <span class="tag">Spotify</span>
+                  <span class="tag">Login</span>
+                  <span class="tag">Apps</span>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq-item" id="apps" data-keywords="apps app store update install reinstall amazon music audible libby calm download playback">
+              <summary>
+                <span>How do I update or reinstall apps on the player?</span>
+                <span class="marker" aria-hidden="true"></span>
+              </summary>
+              <div class="answer">
+                <p>Open the Fyrfly or Campfire app store while connected to Wi-Fi, check for the latest available app version, and install the update from there.</p>
+                <p>If an app is missing or fails to update, restart the player and try again. If it still fails, contact support with the app name and current version.</p>
+                <div class="meta-row" aria-label="Related topics">
+                  <span class="tag">App store</span>
+                  <span class="tag">Updates</span>
+                  <span class="tag">Downloads</span>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq-item" id="power" data-keywords="battery charging charge charger power turn on power on cable">
+              <summary>
+                <span>What should I do if the player will not charge or power on?</span>
+                <span class="marker" aria-hidden="true"></span>
+              </summary>
+              <div class="answer">
+                <p>Try a known-good USB cable and wall charger, leave the player connected for at least 30 minutes, then hold the power button for a full restart.</p>
+                <p>If it still will not power on, send support the model, charging light behavior, and whether the screen shows anything while plugged in.</p>
+                <div class="meta-row" aria-label="Related topics">
+                  <span class="tag">Battery</span>
+                  <span class="tag">Charging</span>
+                  <span class="tag">Power</span>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq-item" id="restrictions" data-keywords="parental controls restrictions admin blocked locked down child access">
+              <summary>
+                <span>How do restrictions and parental controls work on the player?</span>
+                <span class="marker" aria-hidden="true"></span>
+              </summary>
+              <div class="answer">
+                <p>The player is designed to limit access to approved apps and content. If a child can access something unexpected or a needed app is blocked, note the app name and where it appears.</p>
+                <p>When contacting support, include the steps that led there so the restriction setting involved can be identified quickly.</p>
+                <div class="meta-row" aria-label="Related topics">
+                  <span class="tag">Restrictions</span>
+                  <span class="tag">Admin</span>
+                  <span class="tag">Access</span>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq-item" id="wifi" data-keywords="wifi wi-fi network internet connection connect captive portal password">
+              <summary>
+                <span>What should I try if the player will not connect to Wi-Fi?</span>
+                <span class="marker" aria-hidden="true"></span>
+              </summary>
+              <div class="answer">
+                <p>Restart the player, confirm the Wi-Fi password, and try a standard 2.4 GHz or 5 GHz network without a captive portal.</p>
+                <p>If the network uses a browser sign-in page, connect on a simpler network first or ask support for help with that network type.</p>
+                <div class="meta-row" aria-label="Related topics">
+                  <span class="tag">Wi-Fi</span>
+                  <span class="tag">Network</span>
+                  <span class="tag">Setup</span>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq-item" id="setup" data-keywords="setup set up getting started configure first run camp">
+              <summary>
+                <span>Where should I start when setting up a new Fyrfly Player?</span>
+                <span class="marker" aria-hidden="true"></span>
+              </summary>
+              <div class="answer">
+                <p>Charge the player, connect it to Wi-Fi, complete the first-run setup screens, then open the app store to update core apps before handing it to a child.</p>
+                <p>If setup stops on a specific screen, send support a photo of that screen and the device model.</p>
+                <div class="meta-row" aria-label="Related topics">
+                  <span class="tag">Setup</span>
+                  <span class="tag">Getting started</span>
+                  <span class="tag">App store</span>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq-item" id="music" data-keywords="music mp3 transfer files usb sd card micro sd library">
+              <summary>
+                <span>How do I add music or MP3 files to the player?</span>
+                <span class="marker" aria-hidden="true"></span>
+              </summary>
+              <div class="answer">
+                <p>Use standard MP3 files and place them in the player music folder or supported storage location.</p>
+                <p>After copying files, safely eject the device or card and restart the music app so it can rescan the library.</p>
+                <div class="meta-row" aria-label="Related topics">
+                  <span class="tag">MP3</span>
+                  <span class="tag">Music files</span>
+                  <span class="tag">Transfer</span>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <p class="empty-state" id="empty-state">No FAQ entries matched that search. Try a shorter word like app, Wi-Fi, power, or Spotify.</p>
+        </div>
+      </section>
+    </main>
+
+    <section class="contact" aria-labelledby="contact-title">
+      <div>
+        <h2 id="contact-title">Still stuck?</h2>
+        <p>Email support with the device model, app name, current version if available, and a photo or short video of the issue. That context helps us solve device and software issues faster.</p>
+      </div>
+      <a class="button" href="mailto:support@remix8.com">support@remix8.com</a>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <span>Remix8 support for Fyrfly and Campfire Player devices.</span>
+        <span>Last updated June 25, 2026.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const searchInput = document.querySelector("#faq-search");
+    const items = Array.from(document.querySelectorAll(".faq-item"));
+    const emptyState = document.querySelector("#empty-state");
+
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      items.forEach((item) => {
+        const haystack = `${item.textContent} ${item.dataset.keywords || ""}`.toLowerCase();
+        const isVisible = query === "" || haystack.includes(query);
+        item.classList.toggle("hidden", !isVisible);
+        if (isVisible) {
+          visibleCount += 1;
+        }
+      });
+
+      emptyState.classList.toggle("visible", visibleCount === 0);
+    });
+  </script>
+</body>
+</html>
