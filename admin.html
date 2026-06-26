@@ -7,6 +7,9 @@
   <meta name="robots" content="noindex,nofollow">
   <link rel="icon" href="/assets/remix8-logo.png">
   <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
   <style>
     body {
       margin: 0;
@@ -60,5 +63,10 @@
 
   <script src="/admin/require-fresh-login.js"></script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    window.requireFreshAdminLogin().then(() => {
+      window.CMS.init();
+    });
+  </script>
 </body>
 </html>
