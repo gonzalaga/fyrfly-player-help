@@ -1017,34 +1017,25 @@
       return details;
     }
 
-    function decodeBase64Utf8(value) {
-      const binary = atob(value.replace(/\s/g, ""));
-      const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
-      return new TextDecoder().decode(bytes);
+    function normalizeManualFaqs(data) {
+      if (Array.isArray(data)) {
+        return data;
+      }
+      if (data && Array.isArray(data.faqs)) {
+        return data.faqs;
+      }
+      return [];
     }
 
     async function loadManualFaqData() {
-      const apiUrl = "https://api.github.com/repos/gonzalaga/fyrfly-player-help/contents/manual-faqs.json?ref=main";
       try {
-        const response = await fetch(apiUrl, { cache: "no-store" });
-        if (response.ok) {
-          const payload = await response.json();
-          if (payload && payload.content) {
-            return JSON.parse(decodeBase64Utf8(payload.content));
-          }
-        }
-      } catch (error) {
-        console.warn("Manual FAQs could not be loaded from GitHub.", error);
-      }
-
-      try {
-        const response = await fetch("manual-faqs.json", { cache: "no-store" });
+        const response = await fetch(`manual-faqs.json?updated=${Date.now()}`, { cache: "no-store" });
         if (!response.ok) {
           return [];
         }
-        return await response.json();
+        return normalizeManualFaqs(await response.json());
       } catch (error) {
-        console.warn("Manual FAQs could not be loaded from the local file.", error);
+        console.warn("Manual FAQs could not be loaded.", error);
         return [];
       }
     }
@@ -1096,6 +1087,21 @@
     pdfButtons.forEach((button) => {
       button.addEventListener("click", printFaqPdf);
     });
+  </script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user && window.location.hash) {
+          window.netlifyIdentity.open();
+        }
+      });
+      window.netlifyIdentity.on("login", () => {
+        if (window.location.hash) {
+          document.location.href = "admin/";
+        }
+      });
+    }
   </script>
 </body>
 </html>

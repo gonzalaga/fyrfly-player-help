@@ -1,0 +1,56 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "faq_content"
+    label: "FAQ Content"
+    files:
+      - name: "manual_faqs"
+        label: "Manual FAQs"
+        file: "manual-faqs.json"
+        format: "json"
+        fields:
+          - label: "Manual FAQs"
+            name: "faqs"
+            widget: "list"
+            summary: "{{fields.question}}"
+            collapsed: false
+            fields:
+              - label: "Question"
+                name: "question"
+                widget: "string"
+              - label: "Answer"
+                name: "answer"
+                widget: "text"
+              - label: "Published"
+                name: "published"
+                widget: "boolean"
+                default: true
+                required: false
+              - label: "Search keywords"
+                name: "keywords"
+                widget: "string"
+                required: false
+              - label: "Tags"
+                name: "tags"
+                widget: "list"
+                required: false
+                field:
+                  label: "Tag"
+                  name: "tag"
+                  widget: "string"
+              - label: "ID"
+                name: "id"
+                widget: "string"
+                required: false
+                hint: "Optional stable anchor, for example spotify-login-help. Leave blank to auto-generate on the customer page."
+              - label: "Updated"
+                name: "updated"
+                widget: "datetime"
+                required: false
+                date_format: "YYYY-MM-DD"
+                time_format: false
