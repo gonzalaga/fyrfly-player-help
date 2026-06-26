@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fyrfly Player Help | Remix8</title>
   <meta name="description" content="Customer help for Fyrfly and Campfire Player setup, Spotify login, app updates, Wi-Fi, charging, restrictions, and music transfer.">
+  <meta name="theme-color" content="#f2b15d">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Fyrfly Help">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/remix8-logo.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <style>
     :root {
       color-scheme: light;
@@ -1100,6 +1107,15 @@
         if (window.location.hash) {
           document.location.href = "admin/";
         }
+      });
+    }
+  </script>
+  <script>
+    if ("serviceWorker" in navigator && window.location.protocol !== "file:") {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch((error) => {
+          console.warn("Service worker registration failed.", error);
+        });
       });
     }
   </script>
