@@ -7,66 +7,8 @@
   <meta name="robots" content="noindex,nofollow">
   <link rel="icon" href="/assets/remix8-logo.png">
   <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
-  <script>
-    window.CMS_MANUAL_INIT = true;
-  </script>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: oklch(98% 0.006 87);
-      color: oklch(16% 0.012 245);
-      font-family: Avenir Next, Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
-    }
-
-    .admin-intro {
-      width: min(760px, calc(100% - 40px));
-      min-height: 100vh;
-      margin: 0 auto;
-      display: grid;
-      place-items: center;
-      text-align: center;
-    }
-
-    .admin-intro img {
-      width: min(220px, 70vw);
-      height: auto;
-      margin-bottom: 24px;
-    }
-
-    .admin-intro h1 {
-      margin: 0;
-      font-size: clamp(2.8rem, 9vw, 6.5rem);
-      line-height: 0.9;
-      letter-spacing: 0;
-    }
-
-    .admin-intro p {
-      margin: 18px auto 0;
-      max-width: 58ch;
-      color: oklch(43% 0.026 245);
-      font-size: 1.05rem;
-      line-height: 1.5;
-    }
-  </style>
 </head>
 <body>
-  <main class="admin-intro">
-    <div>
-      <img src="/assets/remix8-logo.png" alt="Remix8">
-      <h1>FAQ Admin</h1>
-      <p>Sign in with Netlify Identity to edit manual FAQs. Netlify Git Gateway commits changes to GitHub, then your Netlify deploy publishes the updated customer page.</p>
-    </div>
-  </main>
-
-  <script src="/admin/require-fresh-login.js"></script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script>
-    window.requireFreshAdminLogin().then(() => {
-      window.CMS.init();
-    });
-  </script>
 </body>
 </html>
