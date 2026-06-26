@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FAQ Admin | Remix8</title>
   <meta name="robots" content="noindex,nofollow">
-  <meta http-equiv="refresh" content="0; url=admin/">
-  <link rel="canonical" href="admin/">
-  <link rel="icon" href="assets/remix8-logo.png">
+  <link rel="icon" href="/assets/remix8-logo.png">
+  <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
   <style>
     body {
       margin: 0;
@@ -19,13 +18,59 @@
       font-family: Avenir Next, Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
     }
 
-    a {
-      color: inherit;
-      font-weight: 800;
+    .admin-intro {
+      width: min(760px, calc(100% - 40px));
+      min-height: 100vh;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .admin-intro img {
+      width: min(220px, 70vw);
+      height: auto;
+      margin-bottom: 24px;
+    }
+
+    .admin-intro h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 9vw, 6.5rem);
+      line-height: 0.9;
+      letter-spacing: 0;
+    }
+
+    .admin-intro p {
+      margin: 18px auto 0;
+      max-width: 58ch;
+      color: oklch(43% 0.026 245);
+      font-size: 1.05rem;
+      line-height: 1.5;
     }
   </style>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-  <p>Opening FAQ admin. If it does not redirect, <a href="admin/">continue to admin</a>.</p>
+  <main class="admin-intro">
+    <div>
+      <img src="/assets/remix8-logo.png" alt="Remix8">
+      <h1>FAQ Admin</h1>
+      <p>Sign in with Netlify Identity to edit manual FAQs. Netlify Git Gateway commits changes to GitHub, then your Netlify deploy publishes the updated customer page.</p>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user && window.location.hash) {
+          window.netlifyIdentity.open();
+        }
+      });
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin";
+      });
+    }
+  </script>
 </body>
 </html>
