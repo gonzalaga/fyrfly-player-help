@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.remix8.fyrflyhelp",
+      "sha256_cert_fingerprints": [
+        "56:B7:AB:06:37:DB:E1:AC:07:0C:8C:29:35:82:46:34:AA:BB:6D:0F:2F:D1:1A:A5:DD:CA:01:33:CD:41:5A:01"
+      ]
+    }
+  }
+]
