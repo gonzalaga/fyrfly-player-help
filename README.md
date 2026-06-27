@@ -22,3 +22,5 @@ Required Netlify settings:
 - Enable Git Gateway.
 - Invite admin users through Netlify Identity.
 - Make sure the connected GitHub repo deploys from `main`.
+
+If login succeeds but Decap shows a Git Gateway API error, reconnect or regenerate the Git Gateway token in Netlify's Identity settings and leave the Git Gateway roles field blank unless role-based editor access is intentionally configured.
