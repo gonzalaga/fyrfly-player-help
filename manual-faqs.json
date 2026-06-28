@@ -176,6 +176,233 @@
       ],
       "id": "change-font-size",
       "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "Why doesn't \"Sign in with Google\" work on my device?",
+      "answer": "The \"Sign in with Google\" option is not supported on Campfire and FyrFly Players.\n\nOur devices do not support Google services, web browsing, or browser-based authentication required for Google Sign-In (OAuth). As a result, any app that requires \"Continue with Google\" or \"Sign in with Google\" will not be able to complete the login process.\n\nTo sign in, simply choose the option to log in with your email address and password instead.",
+      "keywords": "Google login, Sign in with Google, Google OAuth, Google authentication, login issue, OAuth not working, email login",
+      "tags": [
+        "Accounts",
+        "Login",
+        "Google",
+        "Troubleshooting"
+      ],
+      "id": "google-sign-in-not-supported",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do Campfire and FyrFly Players work?",
+      "answer": "Campfire and FyrFly Players are designed to provide a safe, distraction-free listening experience.\n\nEach device includes an App Store where you can download popular music and audio apps, including Spotify, Apple Music, Amazon Music, Audible, Pandora, Spotify Kids, Calm, and FM Radio.\n\nMost streaming apps allow you to download music, playlists, audiobooks, and podcasts directly to the device so you can enjoy them offline without a Wi-Fi connection.\n\nIf you don't have a subscription to a streaming service, some apps may still be available to use with free accounts, although they may include ads and have limited features.\n\nYou can also use the FyrFly Music Player app to transfer your own compatible audio files. Simply upload your music to a Box account, sign in through the FyrFly Music Player app, and download your files directly to the device for offline listening.",
+      "keywords": "how it works, Campfire Player, FyrFly Player, music apps, streaming apps, App Store, Spotify, Apple Music, Amazon Music, Audible, Pandora, Spotify Kids, FM Radio, Box, FyrFly Music Player, offline music",
+      "tags": [
+        "Getting Started",
+        "Music",
+        "Streaming Services",
+        "Offline Playback"
+      ],
+      "id": "how-players-work",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I access the app drawer?",
+      "answer": "To access the app drawer, simply swipe up from the bottom of the Home Screen.\n\nThe app drawer contains all the apps installed on your device, including:\n\nApp Store\nSpotify / Spotify Kids\nApple Music\nAmazon Music\nSettings\nAnd any other installed apps\n\nFrom the app drawer, you can open the App Store to install, update, or uninstall apps, or launch any app installed on your device.",
+      "keywords": "app drawer, app menu, swipe up, Home Screen, open apps, App Store, installed apps, find apps",
+      "tags": [
+        "Getting Started",
+        "Apps",
+        "Navigation"
+      ],
+      "id": "access-app-drawer",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I change the device language to English?",
+      "answer": "To change your device language to English, follow these steps:\n\nStep 1: Open the Settings app.\n\nStep 2: Scroll down until you find the option with an exclamation mark inside a circle, then tap it.\n\nStep 3: Tap the first option, which has a globe (earth) icon. This will open the language settings.\n\nStep 4: Tap the plus (+) icon to add a new language.\n\nStep 5: Select English from the list. If you don't see it, tap the Search icon in the upper-right corner and type English.\n\nStep 6: Once English has been added, select it as your preferred language if prompted.",
+      "keywords": "change language, English, language settings, device language, translate device, settings language, change to English",
+      "tags": [
+        "Settings",
+        "Language",
+        "Getting Started"
+      ],
+      "id": "change-language-to-english",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I connect my device to Wi-Fi?",
+      "answer": "To connect your device to a Wi-Fi network, follow these steps:\n\nStep 1: From the Home Screen, swipe up from the bottom to open the app drawer.\n\nStep 2: Open the Settings app.\n\nStep 3: Tap Network & Internet.\n\nStep 4: Make sure the Wi-Fi switch is turned On.\n\nStep 5: Tap Wi-Fi to view available networks.\n\nStep 6: Select your Wi-Fi network and enter the password when prompted.\n\nStep 7: Tap Connect. Once connected, your device is ready to download apps, stream content, and receive updates.",
+      "keywords": "connect to Wi-Fi, Wi-Fi setup, wireless network, internet connection, network settings, Wi-Fi password",
+      "tags": [
+        "Wi-Fi",
+        "Network",
+        "Getting Started",
+        "Settings"
+      ],
+      "id": "connect-to-wifi",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I download apps from the App Store?",
+      "answer": "To download apps to your Campfire or FyrFly Player, follow these steps:\n\nStep 1: Connect your device to a stable Wi-Fi network.\n\nStep 2: Make sure the device's date and time are set correctly.\n\nStep 3: From the Home Screen, swipe up from the bottom to open the app drawer.\n\nStep 4: Open the App Store.\n\nStep 5: Browse or search for the app you want to install.\n\nStep 6: Tap the app and select Install.\n\nStep 7: Wait for the installation to complete, then open the app from the App Store or the app drawer.",
+      "keywords": "download apps, App Store, install apps, app installation, Spotify, Apple Music, Amazon Music, app drawer",
+      "tags": [
+        "App Store",
+        "Apps",
+        "Getting Started"
+      ],
+      "id": "download-apps-from-app-store",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I uninstall an app from my Campfire or FyrFly Player?",
+      "answer": "To uninstall an app, follow these steps:\n\nStep 1: From the Home Screen, swipe up from the bottom to open the app drawer.\n\nStep 2: Open the App Store.\n\nStep 3: Find and tap the app you want to uninstall.\n\nStep 4: Tap Uninstall.\n\nStep 5: Wait for the app to be removed from your device.\n\nNote: Apps must be uninstalled through the App Store, not through the Android Settings menu.",
+      "keywords": "uninstall app, remove app, delete app, App Store, uninstall Spotify, uninstall Apple Music, uninstall Amazon Music, uninstall Calm",
+      "tags": [
+        "App Store",
+        "Apps",
+        "Troubleshooting"
+      ],
+      "id": "uninstall-apps",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I increase the screen brightness?",
+      "answer": "There are two ways to adjust the screen brightness on your device.\n\nOption 1: Quick Settings\n\nStep 1: From the Home Screen, swipe down from the top of the screen.\n\nStep 2: Swipe down again to fully expand the Quick Settings menu.\n\nStep 3: Adjust the Brightness slider to your desired level.\n\nOption 2: Settings\n\nStep 1: Open the Settings app.\n\nStep 2: Tap Display.\n\nStep 3: Tap Brightness level.\n\nStep 4: Adjust the slider to increase or decrease the screen brightness.",
+      "keywords": "brightness, screen brightness, display brightness, brightness level, dim screen, increase brightness, display settings",
+      "tags": [
+        "Display",
+        "Settings",
+        "Getting Started"
+      ],
+      "id": "adjust-screen-brightness",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I download music for offline listening in Spotify?",
+      "answer": "To download music from Spotify for offline listening, follow these steps:\n\nStep 1: Connect your device to a stable Wi-Fi network.\n\nStep 2: Open the Spotify app and sign in to your account.\n\nStep 3: Open the playlist, album, or podcast you want to download.\n\nStep 4: Turn on the Download toggle at the top of the screen.\n\nStep 5: Wait for the download to finish. Once complete, your content will be available for offline listening.\n\nStep 6: To verify that your music has been downloaded, turn off Wi-Fi and open Spotify. Your downloaded content should still be available.\n\nFor more information about downloading content in Spotify, visit Spotify's official help page:\nhttps://newsroom.spotify.com/2019-05-24/how-to-download-and-listen-to-music-and-podcasts-offline-and-on-the-go/",
+      "keywords": "Spotify download, offline Spotify, download playlists, download albums, offline music, Spotify offline mode, local music",
+      "tags": [
+        "Spotify",
+        "Offline Playback",
+        "Music"
+      ],
+      "id": "spotify-offline-download",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "What are my options for adding music to my Campfire or FyrFly Player?",
+      "answer": "There are two ways to add music and other audio content to your Campfire or FyrFly Player.\n\nOption 1: Use a streaming service\n\nYou can subscribe to a supported streaming service such as Spotify, Apple Music, Amazon Music, Audible, or Spotify Kids. These apps allow you to stream and download music, playlists, audiobooks, and podcasts directly to your device for offline listening.\n\nTo keep downloaded content available, you'll need to reconnect the device to Wi-Fi at least once every 30 days. This is required by streaming providers to verify that your subscription is active and to ensure artists and content creators are properly compensated.\n\nOption 2: Transfer your own music files\n\nIf you already have compatible audio files (such as MP3s) on your computer, you can transfer them to your device using the FyrFly Music Player app and a Box account.\n\nTo transfer your music:\n\nStep 1: Create a Box account.\n\nStep 2: Open the App Store on your device and install FyrFly Music Player.\n\nStep 3: Upload your supported audio files to your Box account.\n\nStep 4: Open the FyrFly Music Player app.\n\nStep 5: Tap the menu icon in the upper-left corner.\n\nStep 6: Select Box Account and sign in.\n\nStep 7: Select the songs you want to download to your device.\n\nOnce downloaded, your music can be played anytime without a Wi-Fi connection.",
+      "keywords": "add music, transfer music, MP3, Box, FyrFly Music Player, Spotify, Apple Music, Amazon Music, Audible, Spotify Kids, offline music, streaming services",
+      "tags": [
+        "Getting Started",
+        "Music",
+        "Streaming Services",
+        "Offline Playback",
+        "File Transfer"
+      ],
+      "id": "music-loading-options",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I download music for offline listening?",
+      "answer": "To download music for offline listening, simply sign in to your preferred music streaming app and follow that service's instructions for downloading content.\n\nThe Campfire and FyrFly Players support the following streaming services:\n\nSpotify: https://newsroom.spotify.com/2019-05-24/how-to-download-and-listen-to-music-and-podcasts-offline-and-on-the-go/\nAmazon Music: https://www.amazon.com/gp/help/customer/display.html?nodeId=GMNHEFFY6TU8PV4U\nApple Music: https://support.apple.com/en-us/HT204839\n\nNote: Downloaded content from streaming services requires you to reconnect your device to Wi-Fi at least once every 30 days so the service can verify your subscription.",
+      "keywords": "offline music, download music, Spotify offline, Apple Music offline, Amazon Music offline, streaming services, offline listening",
+      "tags": [
+        "Music",
+        "Offline Playback",
+        "Streaming Services"
+      ],
+      "id": "offline-music-download-links",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "Does my device come with a pre-installed screen protector?",
+      "answer": "Yes. All Campfire and FyrFly Players come with a plastic screen protector pre-installed from the factory.\n\nBefore using the device, you can remove the protective plastic film. If you purchased a tempered glass screen protector, remove the plastic film first, then install the tempered glass protector by following these steps:\n\nStep 1: Carefully peel off the pre-installed plastic screen protector.\n\nStep 2: Clean the screen with a microfiber cloth to remove any dust or fingerprints.\n\nStep 3: Align the tempered glass protector with the screen.\n\nStep 4: Gently press the center of the protector and allow it to adhere, smoothing outward to remove any air bubbles.\n\nStep 5: Wipe the screen with a microfiber cloth to remove any remaining fingerprints or smudges.",
+      "keywords": "screen protector, plastic film, pre-installed screen protector, tempered glass, remove screen protector, protective film",
+      "tags": [
+        "Accessories",
+        "Screen Protector",
+        "Getting Started"
+      ],
+      "id": "preinstalled-screen-protector",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I set the date, time, and time zone on my device?",
+      "answer": "To manually set the date, time, and time zone, follow these steps:\n\nStep 1: From the Home Screen, swipe up from the bottom to open the app drawer.\n\nStep 2: Open the Settings app.\n\nStep 3: Scroll down and tap System.\n\nStep 4: Tap Date & Time.\n\nStep 5: Turn Automatic date & time Off.\n\nStep 6: Tap Set date, choose the correct date, and tap OK.\n\nStep 7: Tap Select time zone, then choose the correct time zone.\n\nStep 8: Tap Set time, select the correct time, and tap OK.\n\nStep 9: Press the Back button to return to the previous screen.\n\nStep 10: Press the Home button (the circle at the bottom of the screen) to return to the Home Screen.\n\nYour device should now display the correct date, time, and time zone.",
+      "keywords": "date and time, set date, set time, time zone, clock, incorrect time, system settings, date settings",
+      "tags": [
+        "Settings",
+        "Date & Time",
+        "Getting Started"
+      ],
+      "id": "set-date-time-timezone",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I use my Shoutout Pro headphones?",
+      "answer": "To use your Shoutout Pro headphones, follow these steps:\n\nStep 1: Press and hold the NC/BT button on the right earcup until you hear the \"Power on\" voice prompt.\n\nStep 2: To enable or disable Noise Cancelling, press the NC/BT button once.\n\nStep 3: To turn the headphones off, press and hold the NC/BT button again until you hear the \"Power off\" voice prompt.",
+      "keywords": "Shoutout Pro, headphones, power on, power off, noise cancelling, NC button, Bluetooth headphones",
+      "tags": [
+        "Headphones",
+        "Shoutout Pro",
+        "Getting Started"
+      ],
+      "id": "shoutout-pro-headphones-instructions",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "My Sparkle speaker won't turn on or isn't working. What should I do?",
+      "answer": "If your Sparkle speaker isn't turning on or isn't working properly, follow these steps:\n\nStep 1: Charge the speaker overnight to ensure the battery is fully charged.\n\nStep 2: After charging, follow the troubleshooting steps shown in this video:\nhttps://youtu.be/UPHoLqOCm9c\n\nStep 3: If the speaker still isn't working after completing the steps above, please contact our support team for further assistance.",
+      "keywords": "Sparkle speaker, speaker not turning on, speaker not working, Sparkle troubleshooting, charge speaker, reset speaker",
+      "tags": [
+        "Sparkle",
+        "Speaker",
+        "Troubleshooting"
+      ],
+      "id": "sparkle-speaker-troubleshooting",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "What are the dimensions of the Sparkle Speaker?",
+      "answer": "The Sparkle Speaker measures approximately 15 inches (L) × 6 inches (W) × 9 inches (H).",
+      "id": "sparkle-speaker-dimensions",
+      "tags": [
+        "Sparkle",
+        "Specifications",
+        "Dimensions"
+      ],
+      "keywords": "Sparkle Speaker dimensions, Sparkle size, speaker measurements, Sparkle specifications, speaker size",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "What's the difference between Spark Plugs and Swing Buds?",
+      "answer": "Both the Spark Plugs and Swing Buds offer excellent wireless audio, but each is designed with different features and benefits.\n\nSpark Plugs\n\nUp to 4 hours of battery life with Environmental Noise Cancellation (ENC) enabled.\nUp to 5 hours of battery life with ENC turned off.\nCharging case provides 3 additional full charges, for up to 20 hours of total listening time.\nFeatures Lossless HD Sound with dual microphones for crystal-clear calls and audio.\nPowered by Qualcomm Bluetooth 5.2 for fast and reliable connectivity.\nIncludes an LED battery indicator on the charging case.\n\nSwing Buds\n\nUp to 6 hours of continuous listening on a single charge.\nFeatures Active Noise Reduction with three selectable listening modes.\nIncludes Transparency Mode, allowing you to hear your surroundings without removing the earbuds.\nBuilt with premium metal materials for added durability and a distinctive design.\nDesigned to pair perfectly with the Campfire Player for an immersive listening experience.\n\nOverall, Spark Plugs are ideal if you want exceptional sound quality, crystal-clear calls, and a compact charging case with extended battery life. Swing Buds are a great choice if you prefer longer listening time on a single charge, customizable noise control, and a premium design.",
+      "keywords": "Spark Plugs vs Swing Buds, compare earbuds, Spark Plugs, Swing Buds, battery life, noise cancellation, transparency mode, Bluetooth earbuds",
+      "tags": [
+        "Earbuds",
+        "Spark Plugs",
+        "Swing Buds",
+        "Comparison"
+      ],
+      "id": "spark-plugs-vs-swing-buds",
+      "updated": "2026-06-27"
     }
   ]
 }
