@@ -42,6 +42,74 @@
       ],
       "id": "what-is-admin-mode",
       "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "What are the dimensions of the Campfire Player 2, Campfire Player 2+, and FyrFly Player?",
+      "answer": "The Campfire Player 2, Campfire Player 2+, and FyrFly Player all have the same dimensions, measuring approximately 4.5 inches x 2.1 inches (11.4 cm x 5.3 cm).",
+      "keywords": "Campfire Player 2 dimensions, Campfire Player 2+ size, FyrFly dimensions, player size, measurements, device dimensions",
+      "tags": [
+        "Specifications",
+        "Dimensions",
+        "Hardware"
+      ],
+      "id": "player-dimensions",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "Can I remove or delete Admin Mode?",
+      "answer": "No. Admin Mode is a built-in factory feature and cannot be removed from the device.\n\nIt is an essential part of the Campfire and FyrFly Players and helps ensure the device functions as intended. Certain settings and features are intentionally restricted to prevent unauthorized changes, app installations, or access to unsupported content. This helps provide a safe, distraction-free experience for camps and other supervised environments.",
+      "keywords": "remove admin mode, delete admin mode, admin account, factory settings, device restrictions, managed device, settings locked",
+      "tags": [
+        "Admin Mode",
+        "Device Management",
+        "Restrictions"
+      ],
+      "id": "remove-admin-mode",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "Can I set a password on my device?",
+      "answer": "No. We no longer support password protection on our devices.\n\nThis feature was removed because many users, especially children, would forget their passwords. Recovering access required a full factory reset, which erased all data and content stored on the device.\n\nRemoving password protection helps provide a simpler and more reliable experience for all users.",
+      "keywords": "password, lock screen, screen lock, device password, PIN, passcode, security, factory reset",
+      "tags": [
+        "Settings",
+        "Security",
+        "Passwords"
+      ],
+      "id": "device-password-support",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "Can I use my device without Wi-Fi?",
+      "answer": "Yes! Once your content has been downloaded, your device can be used without a Wi-Fi connection.\n\nThere are two ways to add content to your device:\n\n1. Use a streaming service\nYou can download music, audiobooks, and other content from supported streaming services, including Spotify, Apple Music, Amazon Music, and Audible.\n\nAfter downloading your content, you can listen offline for up to 30 days. After that, simply reconnect the device to Wi-Fi so the streaming app can refresh your subscription, and you'll receive another 30 days of offline access.\n\n2. Transfer your own music files\nIf you already have compatible audio files (such as MP3s) on your computer, you can transfer them to your device using the FyrFly Music app and a Box account.\n\nTo transfer your music:\n\nCreate a Box account.\nInstall the FyrFly Music app from the App Store on your device.\nUpload your supported audio files to your Box account.\nOpen the FyrFly Music app.\nTap the menu icon and select Box Account.\nSign in to your Box account.\nSelect and download the songs you want on your device.\n\nOnce your files have been downloaded, they can be played anytime without a Wi-Fi connection.",
+      "keywords": "Wi-Fi, offline mode, offline music, no internet, Spotify offline, Apple Music offline, Amazon Music offline, Audible offline, MP3 transfer, Box, FyrFly Music",
+      "tags": [
+        "Wi-Fi",
+        "Offline Playback",
+        "Music",
+        "Streaming Services",
+        "File Transfer"
+      ],
+      "id": "use-device-without-wifi",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "Why do I need to connect my device to Wi-Fi every 30 days?",
+      "answer": "If you use a streaming service such as Spotify, Apple Music, Amazon Music, or Audible, you'll need to connect your device to Wi-Fi at least once every 30 days.\n\nThis is a requirement of the streaming providers to verify that your subscription is still active and to ensure artists and content creators are properly compensated. Once the device reconnects to Wi-Fi and your subscription is verified, you'll receive another 30 days of offline listening.",
+      "keywords": "30 days, Wi-Fi every 30 days, offline listening, streaming subscription, Spotify offline, Apple Music offline, Amazon Music offline, Audible offline, license verification",
+      "tags": [
+        "Wi-Fi",
+        "Offline Playback",
+        "Streaming Services",
+        "Subscription"
+      ],
+      "id": "wifi-every-30-days",
+      "updated": "2026-06-27"
     }
   ]
 }
