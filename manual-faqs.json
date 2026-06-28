@@ -110,6 +110,72 @@
       ],
       "id": "wifi-every-30-days",
       "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I reset and update a pre-2023 device?",
+      "answer": "If you have a Campfire Player manufactured before 2023, you can reset and update your device by following the instructions in the video below:\n\nhttps://youtu.be/enQavlEzssk\n\nThe video provides step-by-step guidance to help you complete the reset and update process.",
+      "keywords": "pre-2023 device, reset device, update device, Campfire Player reset, firmware update, factory reset, old Campfire Player",
+      "tags": [
+        "Troubleshooting",
+        "Device Reset",
+        "Updates",
+        "Legacy Devices"
+      ],
+      "id": "pre-2023-device-reset-update",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I factory reset my Campfire Player 2, Campfire Player 2+, or FyrFly Player?",
+      "answer": "To factory reset your device, follow these steps:\n\nTurn the device off completely.\nPress and hold the Power button. Count to 2, then on the count of 3, press and hold the Volume Down (-) button while continuing to hold the Power button.\nWhen the Android recovery screen (showing a robot lying down) appears, release both buttons.\nQuickly press the Power button and the Volume Up (+) button at the same time to enter Recovery Mode.\nUse the Volume Down (-) button to highlight Wipe data/factory reset, then press the Power button to select it.\nHighlight Factory data reset using the Volume Down (-) button, then press the Power button to confirm.\nOnce the reset is complete, highlight Reboot system now and press the Power button.\nWait for the device to restart. The first boot may take a few minutes.\n\nNote: A factory reset will erase all downloaded content and settings from the device.",
+      "keywords": "factory reset, reset device, recovery mode, Campfire Player 2 reset, Campfire Player 2+, FyrFly reset, wipe data, reboot",
+      "tags": [
+        "Troubleshooting",
+        "Factory Reset",
+        "Recovery Mode"
+      ],
+      "id": "factory-reset-campfire2-fyrfly",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I factory reset my Campfire Player 1?",
+      "answer": "To factory reset your Campfire Player 1, follow these steps:\n\nMake sure the device is fully charged and unplugged from the charger.\nFrom the Home Screen, press and hold the Power button, then select Shut Down.\nOnce the screen turns black, wait 30 seconds.\nPress and hold the Volume Up (+) button and the Power button at the same time until the recovery menu appears.\nUse the Volume Down (-) button to highlight Factory Reset.\nPress the Volume Up (+) button to confirm the reset.\nWait for the device to restart. The first boot may take a few minutes.\n\nNote: A factory reset will erase all downloaded content and settings from the device.",
+      "keywords": "Campfire Player 1 reset, factory reset, recovery mode, reset device, wipe data, reboot, Campfire Player troubleshooting",
+      "tags": [
+        "Troubleshooting",
+        "Factory Reset",
+        "Recovery Mode"
+      ],
+      "id": "factory-reset-campfire-player-1",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I reset my Spark earbuds?",
+      "answer": "If you're having trouble connecting your Spark earbuds, try the following reset procedure:\n\nOn your phone, delete \"Spark\" from the list of paired Bluetooth devices and turn Bluetooth off.\nRemove both earbuds from the charging case. The LEDs on both earbuds will flash blue, and you'll hear the \"Pairing\" prompt.\nQuickly tap the touch area on both earbuds five times. The LEDs will turn purple and then turn off, and you'll hear the \"Power off\" prompt.\nPress and hold the touch area on both earbuds for 3 seconds to power them back on. You'll hear the \"Power on\" prompt, and the LEDs will flash red and blue alternately.\nTurn Bluetooth back on and pair your Spark earbuds with your device again.",
+      "keywords": "Spark earbuds reset, reset earbuds, Bluetooth pairing, reconnect earbuds, Spark Bluetooth, earbuds not connecting",
+      "tags": [
+        "Earbuds",
+        "Bluetooth",
+        "Troubleshooting"
+      ],
+      "id": "reset-spark-earbuds",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I change the font size on my device?",
+      "answer": "To adjust the font size on your device, follow these steps:\n\nStep 1: From the Home Screen, swipe up from the bottom to open the app drawer.\n\nStep 2: Open the Settings app.\n\nStep 3: Tap Display.\n\nStep 4: Tap Advanced.\n\nStep 5: Scroll down and tap Font size.\n\nStep 6: Adjust the slider to make the text smaller or larger based on your preference.",
+      "keywords": "font size, text size, display settings, larger text, smaller text, accessibility, display",
+      "tags": [
+        "Settings",
+        "Display",
+        "Accessibility"
+      ],
+      "id": "change-font-size",
+      "updated": "2026-06-27"
     }
   ]
 }
