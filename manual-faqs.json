@@ -403,6 +403,72 @@
       ],
       "id": "spark-plugs-vs-swing-buds",
       "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "What should I do if my device won't turn on?",
+      "answer": "If your Campfire or FyrFly Player won't turn on, try the following troubleshooting steps:\n\nStep 1: Verify that your USB-C charger and charging cable are working properly. If possible, try a different charger and cable.\n\nStep 2: Charge the device for at least 2–3 hours. If the battery has been completely drained or the device hasn't been used for a while, it may require additional charging time before it powers on.\n\nStep 3: Inspect the USB-C charging port and make sure it is clean and free of dust or debris. If necessary, carefully clean the port using compressed air or a soft brush.\n\nStep 4: Perform a force restart by pressing and holding the Power button for 30 seconds.\n\nIf your device still does not turn on after completing these steps, please contact our support team for further assistance.",
+      "keywords": "device won't turn on, not powering on, won't charge, black screen, force restart, charging issues, dead battery, USB-C",
+      "tags": [
+        "Troubleshooting",
+        "Power",
+        "Charging"
+      ],
+      "id": "device-not-turning-on",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I turn on my device?",
+      "answer": "If your Campfire or FyrFly Player doesn't turn on right away, follow these steps:\n\nStep 1: Connect the device to a wall outlet using a compatible USB-C charger.\n\nStep 2: Allow the device to charge for at least 3 hours.\n\nStep 3: While the device is still connected to the charger, press and hold the Power button (the small side button) for up to 1 minute.\n\nStep 4: If the device still doesn't turn on, try using a different USB-C charger and charging cable, then repeat the steps above.\n\nTip: To confirm the device is charging, briefly press the Power button after it has been plugged in for a few minutes. If a battery indicator appears on the screen, the device is charging properly.",
+      "keywords": "turn on device, power on, won't turn on, first charge, battery indicator, charging, USB-C, power button",
+      "tags": [
+        "Getting Started",
+        "Power",
+        "Charging",
+        "Troubleshooting"
+      ],
+      "id": "turn-on-device",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "Can I upload pictures to my Campfire or FyrFly Player?",
+      "answer": "No. Campfire and FyrFly Players do not support uploading or storing pictures.\n\nThis is an intentional design feature to help prevent games, movies, photos, and other unsupported content from being added to the device. Our players are designed to provide a safe, distraction-free experience focused on music, audiobooks, podcasts, and other supported audio content.",
+      "keywords": "upload pictures, photos, images, picture support, gallery, camera, photo storage, unsupported content",
+      "tags": [
+        "Content",
+        "Restrictions",
+        "Device Features"
+      ],
+      "id": "upload-pictures",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "What is Remix8's warranty and return policy?",
+      "answer": "Remix8 stands behind the quality of its products and is here to help if you experience any issues.\n\nWarranty\nOur warranty covers software-related issues and non-physical defects. If your device experiences a covered issue, our support team will help troubleshoot the problem and, if necessary, provide a replacement device.\n\nPlease note that the warranty does not cover physical damage, including:\n\nCracked or broken screens\nWater or liquid damage\nOther accidental or misuse-related damage\n\nReturns\nIf you'd like to return your device, please contact support@remix8.com within 30 days of receiving your order. Our support team will provide you with return instructions and the return address.\n\nPlease note:\n\nOpened products are subject to a 25% restocking fee.\nCustomers are responsible for return shipping costs.",
+      "keywords": "warranty, return policy, returns, replacement, damaged device, cracked screen, water damage, restocking fee, refund",
+      "tags": [
+        "Warranty",
+        "Returns",
+        "Support"
+      ],
+      "id": "warranty-and-returns",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "Will the FyrFly Player case fit the Campfire Player 2+?",
+      "answer": "Yes! The FyrFly Player case sold on our website is fully compatible with the Campfire Player 2+. It is designed to fit the device securely and provide the same level of protection.",
+      "keywords": "FyrFly case, Campfire Player 2+, CFP2+, compatible case, player case, case compatibility",
+      "tags": [
+        "Accessories",
+        "Cases",
+        "Compatibility"
+      ],
+      "id": "fyrfly-case-campfire-player-2plus",
+      "updated": "2026-06-27"
     }
   ]
 }
