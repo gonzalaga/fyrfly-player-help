@@ -14,6 +14,34 @@
       ],
       "id": "compatible-chargers-headphones",
       "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "How do I add an app to the Home Screen?",
+      "answer": "Step 1: Swipe up from the bottom of the Home Screen to open the app drawer.\n\nStep 2: Find the app you want to add.\n\nStep 3: Tap and hold the app icon.\n\nStep 4: Drag the app to your desired location on the Home Screen, then release it.",
+      "keywords": "add app to Home Screen, app icon, app drawer, swipe up, move app, home screen, app shortcut, icon missing",
+      "tags": [
+        "Apps",
+        "Home Screen,",
+        "Navigation",
+        "Setup"
+      ],
+      "id": "add-app-to-home-screen",
+      "updated": "2026-06-27"
+    },
+    {
+      "published": true,
+      "question": "What is Admin Mode, and why are some features blocked?",
+      "answer": "There is no need to worry about Admin Mode. Our devices are specifically designed to provide a distraction-free experience for camps and other supervised environments.\n\nThe Campfire and FyrFly Players are intended for listening to music, audiobooks, podcasts, FM radio, and reading books. To help keep users focused and prevent access to non-essential features, other apps and device settings are restricted through Admin Mode.\n\nThis is expected behavior and is part of the device's built-in management system.",
+      "keywords": "admin mode, device management, restricted mode, blocked apps, settings locked, camp mode, restrictions, managed device",
+      "tags": [
+        "Admin Mode",
+        "Device Management",
+        "Restrictions",
+        "Settings"
+      ],
+      "id": "what-is-admin-mode",
+      "updated": "2026-06-27"
     }
   ]
 }
