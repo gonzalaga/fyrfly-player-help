@@ -9,12 +9,16 @@ collections:
   - name: "faq_content"
     label: "FAQ Content"
     files:
-      - name: "manual_faqs"
-        label: "Manual FAQs"
-        file: "manual-faqs.json"
+      - name: "faqs"
+        label: "FAQs"
+        file: "faqs.json"
         format: "json"
         fields:
-          - label: "Manual FAQs"
+          - label: "Schema version"
+            name: "schemaVersion"
+            widget: "hidden"
+            default: 1
+          - label: "FAQs"
             name: "faqs"
             widget: "list"
             summary: "{{fields.question}}"

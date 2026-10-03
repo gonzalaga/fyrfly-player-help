@@ -1,5 +1,69 @@
 {
+  "schemaVersion": 1,
   "faqs": [
+    {
+      "published": true,
+      "question": "What should I do if Spotify will not let me sign in on a Fyrfly Player?",
+      "answer": "Connect the player to Wi-Fi, make sure Spotify is updated from the Fyrfly or Campfire app store, then restart the device and try the login again.\n\nIf the login opens a web flow or loops back to the same screen, contact support with the device model, OS version, Spotify version, and a photo of the screen where it gets stuck.",
+      "keywords": "spotify login sign in account app access authentication",
+      "tags": ["Spotify", "Login", "Apps"],
+      "id": "spotify",
+      "updated": "2026-10-03"
+    },
+    {
+      "published": true,
+      "question": "How do I update or reinstall apps on the player?",
+      "answer": "Open the Fyrfly or Campfire app store while connected to Wi-Fi, check for the latest available app version, and install the update from there.\n\nIf an app is missing or fails to update, restart the player and try again. If it still fails, contact support with the app name and current version.",
+      "keywords": "apps app store update install reinstall amazon music audible libby calm download playback",
+      "tags": ["App store", "Updates", "Downloads"],
+      "id": "apps",
+      "updated": "2026-10-03"
+    },
+    {
+      "published": true,
+      "question": "What should I do if the player will not charge or power on?",
+      "answer": "Try a known-good USB cable and wall charger, leave the player connected for at least 30 minutes, then hold the power button for a full restart.\n\nIf it still will not power on, send support the model, charging light behavior, and whether the screen shows anything while plugged in.",
+      "keywords": "battery charging charge charger power turn on power on cable",
+      "tags": ["Battery", "Charging", "Power"],
+      "id": "power",
+      "updated": "2026-10-03"
+    },
+    {
+      "published": true,
+      "question": "How do restrictions and parental controls work on the player?",
+      "answer": "The player is designed to limit access to approved apps and content. If a child can access something unexpected or a needed app is blocked, note the app name and where it appears.\n\nWhen contacting support, include the steps that led there so the restriction setting involved can be identified quickly.",
+      "keywords": "parental controls restrictions admin blocked locked down child access",
+      "tags": ["Restrictions", "Admin", "Access"],
+      "id": "restrictions",
+      "updated": "2026-10-03"
+    },
+    {
+      "published": true,
+      "question": "What should I try if the player will not connect to Wi-Fi?",
+      "answer": "Restart the player, confirm the Wi-Fi password, and try a standard 2.4 GHz or 5 GHz network without a captive portal.\n\nIf the network uses a browser sign-in page, connect on a simpler network first or ask support for help with that network type.",
+      "keywords": "wifi wi-fi network internet connection connect captive portal password",
+      "tags": ["Wi-Fi", "Network", "Setup"],
+      "id": "wifi",
+      "updated": "2026-10-03"
+    },
+    {
+      "published": true,
+      "question": "Where should I start when setting up a new Fyrfly Player?",
+      "answer": "Charge the player, connect it to Wi-Fi, complete the first-run setup screens, then open the app store to update core apps before handing it to a child.\n\nIf setup stops on a specific screen, send support a photo of that screen and the device model.",
+      "keywords": "setup set up getting started configure first run camp",
+      "tags": ["Setup", "Getting started", "App store"],
+      "id": "setup",
+      "updated": "2026-10-03"
+    },
+    {
+      "published": true,
+      "question": "How do I add music or MP3 files to the player?",
+      "answer": "Use standard MP3 files and place them in the player music folder or supported storage location.\n\nAfter copying files, safely eject the device or card and restart the music app so it can rescan the library.",
+      "keywords": "music mp3 transfer files usb sd card micro sd library",
+      "tags": ["MP3", "Music files", "Transfer"],
+      "id": "music",
+      "updated": "2026-10-03"
+    },
     {
       "published": true,
       "question": "What chargers and headphones are compatible with my device?",

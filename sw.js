@@ -1,4 +1,4 @@
-const CACHE_VERSION = "fyrfly-help-v1";
+const CACHE_VERSION = "fyrfly-help-v2";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const FAQ_CACHE = `${CACHE_VERSION}-faq`;
 
@@ -7,6 +7,7 @@ const STATIC_ASSETS = [
   "/index.html",
   "/offline.html",
   "/manifest.webmanifest",
+  "/faqs.json",
   "/assets/remix8-logo.png",
   "/assets/apple-touch-icon.png",
   "/assets/icons/remix8-192.png",
@@ -40,11 +41,11 @@ async function networkFirstFaq(request) {
   try {
     const response = await fetch(request);
     if (response.ok) {
-      await cache.put("/manual-faqs.json", response.clone());
+      await cache.put("/faqs.json", response.clone());
     }
     return response;
   } catch (error) {
-    return await cache.match("/manual-faqs.json") || new Response("{\"faqs\":[]}", {
+    return await cache.match("/faqs.json") || new Response("{\"schemaVersion\":1,\"faqs\":[]}", {
       headers: { "Content-Type": "application/json" }
     });
   }
@@ -78,7 +79,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  if (url.pathname === "/manual-faqs.json") {
+  if (url.pathname === "/faqs.json") {
     event.respondWith(networkFirstFaq(event.request));
     return;
   }

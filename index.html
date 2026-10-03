@@ -361,14 +361,6 @@
       gap: 12px;
     }
 
-    .manual-faqs {
-      margin-top: clamp(30px, 5vw, 54px);
-    }
-
-    .manual-faqs[hidden] {
-      display: none;
-    }
-
     details {
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -724,13 +716,6 @@
         margin: 0 0 5pt;
       }
 
-      .manual-faqs {
-        margin-top: 18pt;
-      }
-
-      .manual-faqs[hidden] {
-        display: none;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -778,7 +763,7 @@
               <li><a href="#music">Music transfer</a></li>
             </ul>
           </div>
-          <p class="smallprint">Updated June 25, 2026. Built from recurring Fyrfly and Campfire Player support topics.</p>
+          <p class="smallprint"><span id="content-updated">Support content</span>. Built from recurring Fyrfly and Campfire Player support topics.</p>
         </aside>
       </section>
 
@@ -811,127 +796,7 @@
             <p>These answers cover device and software support. Shipping, returns, refunds, order status, and store-policy questions are handled separately by customer support.</p>
           </div>
 
-          <div class="faq-list" id="faq-list">
-            <details class="faq-item" id="spotify" open data-keywords="spotify login sign in account app access authentication">
-              <summary>
-                <span>What should I do if Spotify will not let me sign in on a Fyrfly Player?</span>
-                <span class="marker" aria-hidden="true"></span>
-              </summary>
-              <div class="answer">
-                <p>Connect the player to Wi-Fi, make sure Spotify is updated from the Fyrfly or Campfire app store, then restart the device and try the login again.</p>
-                <p>If the login opens a web flow or loops back to the same screen, contact support with the device model, OS version, Spotify version, and a photo of the screen where it gets stuck.</p>
-                <div class="meta-row" aria-label="Related topics">
-                  <span class="tag">Spotify</span>
-                  <span class="tag">Login</span>
-                  <span class="tag">Apps</span>
-                </div>
-              </div>
-            </details>
-
-            <details class="faq-item" id="apps" data-keywords="apps app store update install reinstall amazon music audible libby calm download playback">
-              <summary>
-                <span>How do I update or reinstall apps on the player?</span>
-                <span class="marker" aria-hidden="true"></span>
-              </summary>
-              <div class="answer">
-                <p>Open the Fyrfly or Campfire app store while connected to Wi-Fi, check for the latest available app version, and install the update from there.</p>
-                <p>If an app is missing or fails to update, restart the player and try again. If it still fails, contact support with the app name and current version.</p>
-                <div class="meta-row" aria-label="Related topics">
-                  <span class="tag">App store</span>
-                  <span class="tag">Updates</span>
-                  <span class="tag">Downloads</span>
-                </div>
-              </div>
-            </details>
-
-            <details class="faq-item" id="power" data-keywords="battery charging charge charger power turn on power on cable">
-              <summary>
-                <span>What should I do if the player will not charge or power on?</span>
-                <span class="marker" aria-hidden="true"></span>
-              </summary>
-              <div class="answer">
-                <p>Try a known-good USB cable and wall charger, leave the player connected for at least 30 minutes, then hold the power button for a full restart.</p>
-                <p>If it still will not power on, send support the model, charging light behavior, and whether the screen shows anything while plugged in.</p>
-                <div class="meta-row" aria-label="Related topics">
-                  <span class="tag">Battery</span>
-                  <span class="tag">Charging</span>
-                  <span class="tag">Power</span>
-                </div>
-              </div>
-            </details>
-
-            <details class="faq-item" id="restrictions" data-keywords="parental controls restrictions admin blocked locked down child access">
-              <summary>
-                <span>How do restrictions and parental controls work on the player?</span>
-                <span class="marker" aria-hidden="true"></span>
-              </summary>
-              <div class="answer">
-                <p>The player is designed to limit access to approved apps and content. If a child can access something unexpected or a needed app is blocked, note the app name and where it appears.</p>
-                <p>When contacting support, include the steps that led there so the restriction setting involved can be identified quickly.</p>
-                <div class="meta-row" aria-label="Related topics">
-                  <span class="tag">Restrictions</span>
-                  <span class="tag">Admin</span>
-                  <span class="tag">Access</span>
-                </div>
-              </div>
-            </details>
-
-            <details class="faq-item" id="wifi" data-keywords="wifi wi-fi network internet connection connect captive portal password">
-              <summary>
-                <span>What should I try if the player will not connect to Wi-Fi?</span>
-                <span class="marker" aria-hidden="true"></span>
-              </summary>
-              <div class="answer">
-                <p>Restart the player, confirm the Wi-Fi password, and try a standard 2.4 GHz or 5 GHz network without a captive portal.</p>
-                <p>If the network uses a browser sign-in page, connect on a simpler network first or ask support for help with that network type.</p>
-                <div class="meta-row" aria-label="Related topics">
-                  <span class="tag">Wi-Fi</span>
-                  <span class="tag">Network</span>
-                  <span class="tag">Setup</span>
-                </div>
-              </div>
-            </details>
-
-            <details class="faq-item" id="setup" data-keywords="setup set up getting started configure first run camp">
-              <summary>
-                <span>Where should I start when setting up a new Fyrfly Player?</span>
-                <span class="marker" aria-hidden="true"></span>
-              </summary>
-              <div class="answer">
-                <p>Charge the player, connect it to Wi-Fi, complete the first-run setup screens, then open the app store to update core apps before handing it to a child.</p>
-                <p>If setup stops on a specific screen, send support a photo of that screen and the device model.</p>
-                <div class="meta-row" aria-label="Related topics">
-                  <span class="tag">Setup</span>
-                  <span class="tag">Getting started</span>
-                  <span class="tag">App store</span>
-                </div>
-              </div>
-            </details>
-
-            <details class="faq-item" id="music" data-keywords="music mp3 transfer files usb sd card micro sd library">
-              <summary>
-                <span>How do I add music or MP3 files to the player?</span>
-                <span class="marker" aria-hidden="true"></span>
-              </summary>
-              <div class="answer">
-                <p>Use standard MP3 files and place them in the player music folder or supported storage location.</p>
-                <p>After copying files, safely eject the device or card and restart the music app so it can rescan the library.</p>
-                <div class="meta-row" aria-label="Related topics">
-                  <span class="tag">MP3</span>
-                  <span class="tag">Music files</span>
-                  <span class="tag">Transfer</span>
-                </div>
-              </div>
-            </details>
-          </div>
-
-          <section class="manual-faqs" id="manual-faqs" hidden aria-labelledby="manual-faq-title">
-            <div class="section-heading">
-              <h2 id="manual-faq-title">Additional questions</h2>
-              <p>These answers are maintained manually by the Remix8 support team.</p>
-            </div>
-            <div class="faq-list" id="manual-faq-list"></div>
-          </section>
+          <div class="faq-list" id="faq-list" aria-live="polite"></div>
 
           <p class="empty-state" id="empty-state">No FAQ entries matched that search. Try a shorter word like app, Wi-Fi, power, or Spotify.</p>
         </div>
@@ -949,7 +814,7 @@
     <footer>
       <div class="footer-inner">
         <span>Remix8 support for Fyrfly and Campfire Player devices.</span>
-        <span>Last updated June 25, 2026.</span>
+        <span id="footer-updated">Support content is kept up to date.</span>
       </div>
     </footer>
   </div>
@@ -957,10 +822,11 @@
   <script>
     const searchInput = document.querySelector("#faq-search");
     const emptyState = document.querySelector("#empty-state");
-    const manualSection = document.querySelector("#manual-faqs");
-    const manualList = document.querySelector("#manual-faq-list");
+    const faqList = document.querySelector("#faq-list");
+    const contentUpdated = document.querySelector("#content-updated");
+    const footerUpdated = document.querySelector("#footer-updated");
     const pdfButtons = document.querySelectorAll("#download-pdf, [data-pdf-trigger]");
-    let items = Array.from(document.querySelectorAll(".faq-item"));
+    let items = [];
 
     function applySearch() {
       const query = searchInput.value.trim().toLowerCase();
@@ -983,11 +849,12 @@
       applySearch();
     }
 
-    function createManualFaq(faq, index) {
+    function createFaq(faq, index) {
       const details = document.createElement("details");
-      const id = faq.id || `manual-${index + 1}`;
-      details.className = "faq-item manual-faq-item";
+      const id = faq.id || `faq-${index + 1}`;
+      details.className = "faq-item";
       details.id = id;
+      details.open = index === 0;
       details.dataset.keywords = [faq.keywords, ...(faq.tags || [])].filter(Boolean).join(" ");
 
       const summary = document.createElement("summary");
@@ -1024,7 +891,7 @@
       return details;
     }
 
-    function normalizeManualFaqs(data) {
+    function normalizeFaqs(data) {
       if (Array.isArray(data)) {
         return data;
       }
@@ -1034,38 +901,48 @@
       return [];
     }
 
-    async function loadManualFaqData() {
+    async function loadFaqData() {
       try {
-        const response = await fetch(`manual-faqs.json?updated=${Date.now()}`, { cache: "no-store" });
+        const response = await fetch(`faqs.json?updated=${Date.now()}`, { cache: "no-store" });
         if (!response.ok) {
           return [];
         }
-        return normalizeManualFaqs(await response.json());
+        return normalizeFaqs(await response.json());
       } catch (error) {
-        console.warn("Manual FAQs could not be loaded.", error);
+        console.warn("FAQs could not be loaded.", error);
         return [];
       }
     }
 
-    async function loadManualFaqs() {
+    async function loadFaqs() {
       try {
-        const faqs = await loadManualFaqData();
+        const faqs = await loadFaqData();
         const publishedFaqs = Array.isArray(faqs) ? faqs.filter((faq) => faq && faq.published !== false) : [];
         if (!publishedFaqs.length) {
+          emptyState.classList.add("visible");
+          emptyState.textContent = "Help content is temporarily unavailable. Please try again later.";
           return;
         }
         const fragment = document.createDocumentFragment();
-        publishedFaqs.forEach((faq, index) => fragment.appendChild(createManualFaq(faq, index)));
-        manualList.replaceChildren(fragment);
-        manualSection.hidden = false;
+        publishedFaqs.forEach((faq, index) => fragment.appendChild(createFaq(faq, index)));
+        faqList.replaceChildren(fragment);
+        const latestUpdate = publishedFaqs.map((faq) => faq.updated).filter(Boolean).sort().at(-1);
+        if (latestUpdate) {
+          const formatted = new Intl.DateTimeFormat("en-US", {
+            dateStyle: "long",
+            timeZone: "UTC"
+          }).format(new Date(`${latestUpdate}T00:00:00Z`));
+          contentUpdated.textContent = `Updated ${formatted}`;
+          footerUpdated.textContent = `Last updated ${formatted}.`;
+        }
         refreshFaqItems();
       } catch (error) {
-        console.warn("Manual FAQs could not be loaded.", error);
+        console.warn("FAQs could not be loaded.", error);
       }
     }
 
     async function printFaqPdf() {
-      await manualFaqsReady;
+      await faqsReady;
       const originalSearch = searchInput.value;
       const faqItems = Array.from(document.querySelectorAll(".faq-item"));
       const openStates = faqItems.map((item) => item.open);
@@ -1090,7 +967,7 @@
     }
 
     searchInput.addEventListener("input", applySearch);
-    const manualFaqsReady = loadManualFaqs();
+    const faqsReady = loadFaqs();
     pdfButtons.forEach((button) => {
       button.addEventListener("click", printFaqPdf);
     });
