@@ -4,17 +4,19 @@ Static customer FAQ site for Fyrfly and Campfire Player support.
 
 Open `index.html` directly or serve the folder with any static web server.
 
-## PWA and Android app packaging
+## Progressive Web App
 
-The customer FAQ is PWA-ready with `manifest.webmanifest`, `sw.js`, offline fallback, and app icons. The intended Android packaging path is Trusted Web Activity so the Play Store app loads the live Netlify site and FAQ updates continue to publish through Netlify.
+The customer FAQ is PWA-ready with `manifest.webmanifest`, `sw.js`, offline fallback, and app icons.
 
-See `android-twa.md` for the Bubblewrap build steps and Digital Asset Links setup.
+## FAQ content
 
-## Netlify manual FAQ admin
+`faqs.json` is the single source of truth for the public website and the native Fyrfly Support Android app. All customer-facing questions must be maintained there rather than embedded in `index.html`.
 
-Open `/admin/` on the Netlify-hosted site to add manual FAQ entries.
+## Netlify FAQ admin
 
-This uses Netlify Identity plus Git Gateway through Decap CMS. Admins do not need a GitHub API token in the browser. Netlify commits changes to `manual-faqs.json` in GitHub, then Netlify deploys the updated site.
+Open `/admin/` on the Netlify-hosted site to manage FAQ entries.
+
+This uses Netlify Identity plus Git Gateway through Decap CMS. Admins do not need a GitHub API token in the browser. Netlify commits changes to `faqs.json` in GitHub, then Netlify deploys the updated site.
 
 Required Netlify settings:
 
